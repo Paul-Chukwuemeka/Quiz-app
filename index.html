@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body class="darkmode">
+    <div class="header">
+      <img src="light.png" alt="">
+      <div id="bg-mode" class="iconToggle">
+        <div class="case">
+          <i id="themeIcon" class="fa-solid fa-sun"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="landingPage">
+      <div class="custom">
+      <div class="categories">
+        <p>Categories</p>
+        <select name="Categories" id="categories">
+          <option value= "17">Science</option>
+          <option value="9">General Knowledge</option>
+          <option value="22">Geography</option>
+          <option value="27">Animals</option>
+        </select>
+      </div>
+      <button id="startBtn" onclick="loadGame()">Start Game</button>
+    </div>
+      <div class="hidden" id="quizContent">
+        <div class="numbers">
+          <h1 id="questionNumber"></h1>
+          <h1 id="score">Score</h1>
+        </div>
+        <div class="quiz-body">
+          <div class="quiz-box">
+            <p id="question">Question</p>
+            <button id="1" class="answer1">Answer1</button>
+            <button id="2" class="answer2">Answer2</button>
+            <button id="3" class="answer3">Answer3</button>
+            <button id="4" class="answer4">Answer4</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script
+    src="https://kit.fontawesome.com/e2352a08d2.js"
+    crossorigin="anonymous"
+  ></script>
+  <script src="app.js"></script>
+</html>
