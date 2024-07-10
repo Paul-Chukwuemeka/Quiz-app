@@ -10,18 +10,24 @@ const gameScore = document.getElementById("score");
 const questionNumber = document.getElementById("questionNumber");
 const startBtn = document.getElementById("startBtn");
 const content = document.getElementById("quizContent");
+const custom = document.getElementById("custom")
 const category = document.getElementById("categories");
+const difficulty = document.getElementById("difficulty")
 const choices = [optionOne, optionTwo, optionThree, optionFour];
+const scorePage = document.getElementById("scorePage")
 let selectedCat = 0;
-let apiUrl = `https://opentdb.com/api.php?amount=10&category=${selectedCat}&difficulty=easy&type=multiple`;
-function getCatValue() {
+let selectedDiff = 0;
+let apiUrl = `https://opentdb.com/api.php?amount=10&category=${selectedCat}&difficulty=${selectedDiff}&type=multiple`;
+function getValues() {
   selectedCat = category.value;
-  console.log(selectedCat);
-  apiUrl = `https://opentdb.com/api.php?amount=10&category=${selectedCat}&difficulty=easy&type=multiple`;
+  selectedDiff = difficulty.value;
+  console.log(selectedDiff);
+  apiUrl = `https://opentdb.com/api.php?amount=10&category=${selectedCat}&difficulty=${selectedDiff}&type=multiple`;
   return selectedCat;
 }
-category.addEventListener("change", getCatValue);
-getCatValue();
+category.addEventListener("change", getValues);
+difficulty.addEventListener("change", getValues);
+getValues();
 let questions = [];
 let questionIndex = 0;
 let questionCount = 0;
@@ -48,6 +54,7 @@ async function loadQuestions() {
 function getNewQuestion() {
   if (questionIndex >= questions.length) {
     console.log("No more questions");
+    scorePage.classList.remove('hidden')
     return;
   }
 
@@ -64,7 +71,7 @@ function getNewQuestion() {
   optionThree.textContent = shuffledAnswers[2];
   optionFour.textContent = shuffledAnswers[3];
 
-  questionNumber.textContent = `Question: ${questionIndex + 1}/10`;
+  questionNumber.textContent = `Question: ${questionIndex + 1}/${questions.length}`;
   questionIndex++;
 }
 
@@ -92,8 +99,8 @@ choices.forEach((choice) => {
       choice.classList.add("incorrect");
       console.log("Incorrect " + score +" Correct Answer: "+correctAnswer);
     }
-    setTimeout(remove, 500);
-    setTimeout(getNewQuestion, 500);
+    setTimeout(remove, 800);
+    setTimeout(getNewQuestion, 800);
     questionCount++;
   });
 });
@@ -104,5 +111,5 @@ function startGame() {
 function loadGame() {
   startGame();
   content.classList.toggle("hidden");
-  startBtn.classList.toggle("hidden");
+  custom.classList.toggle("hidden");
 }
