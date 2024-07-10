@@ -6,15 +6,15 @@
 }
 body {
   background: linear-gradient(135deg, #f5f7fa 0%, #a9c2e9 100%);
-  
   overflow: hidden;
   height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 .darkmode {
   color: white;
-  background: linear-gradient(to top right, black, purple);
+  background: linear-gradient(to top right, black, rgb(110, 2, 110));
 }
 .header {
   text-align: center;
@@ -59,14 +59,6 @@ body {
   font-size: 30px;
   color: orange;
   background-color: black;
-}
-.quiz-body {
-  position: relative;
-  top: 3rem;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 .quiz-box {
   background-color: #c370f71b;
@@ -245,3 +237,83 @@ body {
   box-shadow: rgb(32, 31, 31) 2px 2px 3px, rgb(32, 31, 31) -2px -2px 3px,
     rgb(32, 31, 31) -2px -2px 3px;
 }
+#quizContent{
+  transition-duration: 2s;
+}
+
+.lds-ellipsis,
+.lds-ellipsis div {
+  box-sizing: border-box;
+}
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ellipsis div {
+  position: absolute;
+  top: 33.33333px;
+  width: 13.33333px;
+  height: 13.33333px;
+  border-radius: 50%;
+  background: currentColor;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+}
+.lds-ellipsis div:nth-child(1) {
+  background-color: #c370f7;
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(2) {
+  background-color: #c370f7;
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(3) {
+  background-color: #c370f7;
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+.lds-ellipsis div:nth-child(4) {
+  background-color: #c370f7;
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(24px, 0);
+  }
+}
+
+
+/* @media (max-width: 780px) {
+  .landingPage{
+    width: 400px;
+  }
+  .quiz-body{
+    width: 50%;
+  }
+  .quiz-box{
+    width: 10%;
+  }
+ }  */

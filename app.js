@@ -9,6 +9,7 @@ const optionFour = document.getElementById("4");
 const gameScore = document.getElementById("score");
 const questionNumber = document.getElementById("questionNumber");
 const startBtn = document.getElementById("startBtn");
+const loadingElement = document.getElementById("loadingElement")
 const content = document.getElementById("quizContent");
 const custom = document.getElementById("custom")
 const category = document.getElementById("categories");
@@ -17,12 +18,12 @@ const choices = [optionOne, optionTwo, optionThree, optionFour];
 const scorePage = document.getElementById("scorePage")
 let selectedCat = 0;
 let selectedDiff = 0;
-let apiUrl = `https://opentdb.com/api.php?amount=10&category=${selectedCat}&difficulty=${selectedDiff}&type=multiple`;
+let apiUrl = `https://opentdb.com/api.php?amount=10&category=${selectedCat}&difficulty=${selectedDiff}&type=multiple&token=87a5554db38a7b70436940be318b05198f6903210a3511f9a13579acb8bb40fb`;
 function getValues() {
   selectedCat = category.value;
   selectedDiff = difficulty.value;
   console.log(selectedDiff);
-  apiUrl = `https://opentdb.com/api.php?amount=10&category=${selectedCat}&difficulty=${selectedDiff}&type=multiple`;
+  apiUrl = `https://opentdb.com/api.php?amount=10&category=${selectedCat}&difficulty=${selectedDiff}&type=multiple&token=87a5554db38a7b70436940be318b05198f6903210a3511f9a13579acb8bb40fb`;
   return selectedCat;
 }
 category.addEventListener("change", getValues);
@@ -43,6 +44,8 @@ async function loadQuestions() {
       throw new Error(`Error ${result.status}`);
     }
     if (data && data.results) {
+      loadingElement.style.display = 'none'
+      setTimeout(content.style.display = 'block',800)
       questions = data.results;
       getNewQuestion();
     }
@@ -68,8 +71,8 @@ function getNewQuestion() {
   const shuffledAnswers = allAnswers.sort(() => Math.random() - 0.5);
   optionOne.innerHTML = shuffledAnswers[0];
   optionTwo.innerHTML = shuffledAnswers[1];
-  optionThree.textContent = shuffledAnswers[2];
-  optionFour.textContent = shuffledAnswers[3];
+  optionThree.innerHTML = shuffledAnswers[2];
+  optionFour.innerHTML = shuffledAnswers[3];
 
   questionNumber.textContent = `Question: ${questionIndex + 1}/${questions.length}`;
   questionIndex++;
@@ -109,6 +112,8 @@ function startGame() {
   loadQuestions();
 }
 function loadGame() {
+  loadingElement.style.display ="block"
+  content.style.display ="none"
   startGame();
   content.classList.toggle("hidden");
   custom.classList.toggle("hidden");
