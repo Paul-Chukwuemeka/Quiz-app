@@ -6,6 +6,7 @@
 }
 body {
   background: linear-gradient(135deg, #f5f7fa 0%, #a9c2e9 100%);
+  
   overflow: hidden;
   height: 100vh;
   display: flex;
