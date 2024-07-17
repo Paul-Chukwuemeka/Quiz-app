@@ -319,10 +319,13 @@ body {
     display: flex;
     justify-content: center;
   }
+  .numbers{
+    padding: 30px 0;
+  }
   .quiz-box {
     background-color: #c370f71b;
     position: relative;
-    width: 450px;
+    width: 400px;
     height: 309px;
     border-radius: 10px;
     display: flex;
