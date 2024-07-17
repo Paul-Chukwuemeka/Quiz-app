@@ -1,6 +1,7 @@
 const themeToggle = document.getElementById("bg-mode");
 const themeIcon = document.getElementById("themeIcon");
 const body = document.body;
+const headerImg = document.getElementById("headerImg")
 const trivaQuestion = document.getElementById("question");
 const optionOne = document.getElementById("1");
 const optionTwo = document.getElementById("2");
@@ -18,12 +19,28 @@ const choices = [optionOne, optionTwo, optionThree, optionFour];
 const scorePage = document.getElementById("scorePage")
 let selectedCat = 0;
 let selectedDiff = 0;
-let apiUrl = `https://opentdb.com/api.php?amount=10&category=${selectedCat}&difficulty=${selectedDiff}&type=multiple&token=87a5554db38a7b70436940be318b05198f6903210a3511f9a13579acb8bb40fb`;
+let token = " "
+async function getToken(){
+  try{
+    const tokenUrl = await fetch( "https://opentdb.com/api_token.php?command=request")
+    const tokenData = await tokenUrl.json()
+    token = tokenData.token
+    console.log(token)
+    if(!tokenUrl.ok){
+      throw new Error(`${tokenUrl.status}`)
+    }
+  }
+  catch(error){
+    console.error(error)
+  }
+}
+getToken()
+let apiUrl = `https://opentdb.com/api.php?amount=10&category=${selectedCat}&difficulty=${selectedDiff}&type=multiple&token=${token}`;
 function getValues() {
   selectedCat = category.value;
   selectedDiff = difficulty.value;
   console.log(selectedDiff);
-  apiUrl = `https://opentdb.com/api.php?amount=10&category=${selectedCat}&difficulty=${selectedDiff}&type=multiple&token=87a5554db38a7b70436940be318b05198f6903210a3511f9a13579acb8bb40fb`;
+  apiUrl = `https://opentdb.com/api.php?amount=10&category=${selectedCat}&difficulty=${selectedDiff}&type=multiple&token=${token}`;
   return selectedCat;
 }
 category.addEventListener("change", getValues);
@@ -82,6 +99,12 @@ themeIcon.addEventListener("click", () => {
   body.classList.toggle("darkmode");
   themeIcon.classList.toggle("fa-sun");
   themeIcon.classList.toggle("fa-moon");
+  if(headerImg.scroll.endsWith('image.jpg')){
+    headerImg.src = "./Quizly-dark.png"
+  }
+  else{
+    headerImg.src = "./Quizly-light.png"
+  }
 });
 
 choices.forEach((choice) => {

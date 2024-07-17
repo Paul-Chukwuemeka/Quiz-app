@@ -5,7 +5,7 @@
   --themeIcon: "fa-sun";
 }
 body {
-  background: linear-gradient(135deg, #f5f7fa 0%, #a9c2e9 100%);
+  background-image: url(./Bg-img.jfif);
   overflow: hidden;
   height: 100vh;
   display: flex;
@@ -63,7 +63,6 @@ body {
 .quiz-box {
   background-color: #c370f71b;
   position: relative;
-  min-width: 600px;
   width: 538px;
   height: 309px;
   border-radius: 10px;
@@ -86,7 +85,7 @@ body {
   top: 7rem;
   left: 5%;
   padding: 20px;
-  width: 214px;
+  width: 35% ;
   height: 41px;
   padding: 10px;
   margin: 0;
@@ -100,7 +99,7 @@ body {
   position: absolute;
   top: 7rem;
   left: 55%;
-  width: 214px;
+  width: 35% ;
   height: 41px;
   padding: 10px;
   margin: 0;
@@ -116,7 +115,7 @@ body {
   top: 12rem;
   left: 5%;
   padding: 20px;
-  width: 214px;
+  width: 35% ;
   height: 41px;
   padding: 0;
   margin: 0;
@@ -131,7 +130,7 @@ body {
   top: 12rem;
   left: 55%;
   padding: 20px;
-  width: 214px;
+  width: 35% ;
   height: 41px;
   padding: 0;
   margin: 0;
@@ -179,6 +178,7 @@ body {
   display: flex;
   margin: 0;
   justify-content: space-between;
+  padding: 30px;
 }
 .hidden {
   display: none;
@@ -231,14 +231,15 @@ body {
 .custom {
   /* border: solid red 1px; */
   background-color: #c370f700;
-  backdrop-filter: blur(10px);
+  
+  backdrop-filter: blur(2px);
   padding: 10%;
   border-radius: 10px;
-  box-shadow: rgb(32, 31, 31) 2px 2px 3px, rgb(32, 31, 31) -2px -2px 3px,
-    rgb(32, 31, 31) -2px -2px 3px;
+  box-shadow: rgb(65, 63, 63) 1px 2px 3px, rgb(65, 63, 63) -1px 0px 3px,
+  rgb(65, 63, 63) -1px -2px 3px;
 }
 #quizContent{
-  transition-duration: 2s;
+  /* transition-duration: 2s; */
 }
 
 .lds-ellipsis,
@@ -306,14 +307,27 @@ body {
 }
 
 
-/* @media (max-width: 780px) {
+@media (max-width: 750px) {
   .landingPage{
     width: 400px;
   }
+  #quizContent{
+    width: 100vw;
+  }
   .quiz-body{
-    width: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
-  .quiz-box{
-    width: 10%;
+  .quiz-box {
+    background-color: #c370f71b;
+    position: relative;
+    width: 450px;
+    height: 309px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    padding: 15px;
   }
- }  */
+
+ } 
