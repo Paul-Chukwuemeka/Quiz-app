@@ -6,6 +6,8 @@
 }
 body {
   background-image: url(./Bg-img.jfif);
+  background-repeat: no-repeat;
+  background-size: cover;
   overflow: hidden;
   height: 100vh;
   display: flex;
