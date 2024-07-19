@@ -17,6 +17,7 @@ const category = document.getElementById("categories");
 const difficulty = document.getElementById("difficulty")
 const choices = [optionOne, optionTwo, optionThree, optionFour];
 const scorePage = document.getElementById("scorePage")
+const scoreResult = document.getElementById("scoreResult")
 let selectedCat = 0;
 let selectedDiff = 0;
 let token = " "
@@ -74,6 +75,7 @@ async function loadQuestions() {
 function getNewQuestion() {
   if (questionIndex >= questions.length) {
     console.log("No more questions");
+    scoreResult.innerHTML = `Score : ${score}`
     scorePage.classList.remove('hidden')
     return;
   }
@@ -128,9 +130,11 @@ choices.forEach((choice) => {
     setTimeout(remove, 800);
     setTimeout(getNewQuestion, 800);
     questionCount++;
+    scoreResult.innerHTML = `Score : ${score}`
   });
 });
 
+scoreResult.innerHTML = `Score : ${score}`
 function startGame() {
   loadQuestions();
 }

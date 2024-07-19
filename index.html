@@ -21,6 +21,7 @@
         <div class="categories">
           <p>Categories</p>
           <select name="Categories" id="categories">
+            <option value="0">Any</option>
             <option value="17">Science</option>
             <option value="9">General Knowledge</option>
             <option value="22">Geography</option>
@@ -53,9 +54,11 @@
           </div>
         </div>
       </div>
-      <div class="hidden scorePage" id="scorePage">
-        <h1>Quiz completed</h1>
-        <h1>Score</h1>
+      <div class="scorePage hidden" id="scorePage">
+        <div class="scoreContent">
+          <h1>Quiz completed</h1>
+          <h1 id="scoreResult"></h1>
+        </div>
       </div>
     </div>
   </body>
