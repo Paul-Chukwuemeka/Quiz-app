@@ -145,3 +145,6 @@ function loadGame() {
   content.classList.toggle("hidden");
   custom.classList.toggle("hidden");
 }
+function refreshPage() {
+  location.reload();
+}
